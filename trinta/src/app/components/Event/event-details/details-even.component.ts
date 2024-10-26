@@ -78,22 +78,7 @@ export class DetailsEvenComponent implements OnInit {
   }
 
   async ngOnInit() {
-    loadComments(): void {
-      if (!this.eventId) {
-        console.log('Cannot load comments: eventId is undefined');
-        return;
-      }
     
-      this.eventService.getComments(this.eventId).subscribe(
-        (data) => {
-          this.comments = data;
-          this.cdr.detectChanges(); // Forcer la détection des changements
-        },
-        (error) => {
-          console.log('Erreur lors du chargement des commentaires', error);
-        }
-      );
-    };
     this.patientId = this.authservice.getUserId();
     const eventId = this.route.snapshot.paramMap.get('id');
     this.eventId = eventId;
@@ -138,7 +123,7 @@ export class DetailsEvenComponent implements OnInit {
     } catch (error) {
       console.error('Error loading model:', error);
     }
-    
+    this.loadComments();
   }
 
   isRequester(): boolean {
@@ -159,7 +144,22 @@ export class DetailsEvenComponent implements OnInit {
     });
   }
 
-
+  loadComments(): void {
+    if (!this.eventId) {
+      console.log('Cannot load comments: eventId is undefined');
+      return;
+    }
+  
+    this.eventService.getComments(this.eventId).subscribe(
+      (data) => {
+        this.comments = data;
+        this.cdr.detectChanges(); // Forcer la détection des changements
+      },
+      (error) => {
+        console.log('Erreur lors du chargement des commentaires', error);
+      }
+    );
+  }
   
 
   submitComment() {
