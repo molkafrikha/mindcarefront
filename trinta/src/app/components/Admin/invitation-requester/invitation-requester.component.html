@@ -1,0 +1,69 @@
+<div class="col-lg-12">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h5 class="mt-0 mb-0">Pending Invitations</h5>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="pending-invitations-table">
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Full Name Column -->
+            <ng-container matColumnDef="fullName">
+              <th mat-header-cell *matHeaderCellDef>Full Name</th>
+              <td mat-cell *matCellDef="let requester">{{requester.user.fullName}}</td>
+            </ng-container>
+
+            <!-- Organization Name Column -->
+            <ng-container matColumnDef="organization_name">
+              <th mat-header-cell *matHeaderCellDef>Organization</th>
+              <td mat-cell *matCellDef="let requester">{{requester.organization_name}}</td>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Email</th>
+              <td mat-cell *matCellDef="let requester">{{requester.user.email}}</td>
+            </ng-container>
+
+            <!-- Location Column -->
+            <ng-container matColumnDef="location">
+              <th mat-header-cell *matHeaderCellDef>City</th>
+              <td mat-cell *matCellDef="let requester">{{requester.location}}</td>
+            </ng-container>
+
+            <!-- Mobile Phone Column -->
+            <ng-container matColumnDef="mobile_phone">
+              <th mat-header-cell *matHeaderCellDef>Mobile Phone</th>
+              <td mat-cell *matCellDef="let requester">{{requester.user.mobile_phone}}</td>
+            </ng-container>
+
+            <!-- Role Column -->
+            <ng-container matColumnDef="role">
+              <th mat-header-cell *matHeaderCellDef>Role</th>
+              <td mat-cell *matCellDef="let requester">{{requester.user.role}}</td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let requester">
+                
+                <button mat-button color="primary" (click)="approveRequester(requester.user.email)">Accept</button>
+                <button mat-button color="warn" (click)="rejectRequester(requester.user.email)">Reject</button>
+              </td>
+            </ng-container>
+            
+
+            <!-- Table Headers and Rows -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <mat-paginator [pageSizeOptions]="[5, 9, 10]"></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

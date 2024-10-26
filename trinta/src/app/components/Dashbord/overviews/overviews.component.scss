@@ -1,0 +1,57 @@
+.website-overview-card {
+    background-color: #1e1e1e; /* Dark background for modern look */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.header-title {
+    font-size: 1.25rem; /* Slightly larger title font size */
+    font-weight: bold;
+    color: #ffffff; /* White color for header title */
+}
+
+.trending {
+    display: flex;
+    align-items: center;
+    color: #ffffff; /* White text */
+}
+
+.trending i {
+    font-size: 1.5rem; /* Larger icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+.stat-icon {
+    font-size: 2rem; /* Larger icon size */
+    color: #00bcd4; /* Accent color for icons */
+}
+.stat-box {
+    background-color: #fffefe; /* Darker background for each stat box */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the box */
+    text-align: center; /* Centered text */
+    color: #ffffff; /* White text */
+    margin-bottom: 16px; /* Spacing between boxes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for each box */
+}
+
+.stat-icon {
+    font-size: 2rem; /* Larger icon size */
+    color: #00bcd4; /* Accent color for icons */
+}
+
+.stat-title {
+    font-size: 1rem; /* Title font size */
+    font-weight: bold;
+    margin-top: 8px; /* Space between icon and title */
+}
+
+.stat-value {
+    font-size: 1.25rem; /* Larger font size for values */
+    font-weight: bold;
+    margin-top: 4px; /* Space between title and value */
+}
+
+.mat-card-header, .mat-card-content {
+    padding: 16px; /* Consistent padding for card content */
+}

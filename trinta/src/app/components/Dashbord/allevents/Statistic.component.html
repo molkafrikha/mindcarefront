@@ -1,0 +1,573 @@
+<div *ngIf="isAdmin()">
+
+ 
+  <div class="row">
+    
+    <!-- Dashboard Title -->
+    <div class="col-12 mb-4">
+      
+      
+    </div>
+    
+    <!-- User Statistics -->
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Users</span>
+              <h5 class="m-0">{{ totalUsers }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/icons/user.svg" alt="icon">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Requester Statistics -->
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Requesters</span>
+              <h5 class="m-0">{{ total_requester }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/company.png" alt="icon" width="50" height="50">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Worker Statistics -->
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Workers</span>
+              <h5 class="m-0">{{ total_workers }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/icons/star-user.svg" alt="icon">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Event Statistics -->
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Events</span>
+              <h5 class="m-0">{{ totalevent }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/icons/book.svg" alt="icon">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+<!-- Container for map and table -->
+<div class="container">
+  <!-- Table Card -->
+  <mat-card class="trinta-card all-courses-card mb-25 bg-white border-none d-block table-card">
+    <mat-card-content>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSourceworker" class="mat-table custom-table">
+
+          <!-- Event Title Column -->
+          <ng-container matColumnDef="event_title">
+            <th mat-header-cell *matHeaderCellDef class="custom-header">Event Title</th>
+            <td mat-cell *matCellDef="let element" class="custom-cell">
+              <a [routerLink]="['/events', element.event_id]"> {{ element.event_title }}</a>
+            </td>
+          </ng-container>
+
+          <!-- Workers Column -->
+          <ng-container matColumnDef="workers">
+            <th mat-header-cell *matHeaderCellDef class="custom-header">Workers</th>
+            <td mat-cell *matCellDef="let element" class="custom-cell">
+              <ul class="custom-worker-list">
+                <li *ngFor="let worker of element.workers" class="custom-worker-item">
+                  <a [routerLink]="['/admin/worker-dashboard', worker.id]" class="worker-link">
+                    <strong>{{ worker.worker_name }}</strong>
+                  </a>
+                  <br>
+                  <small class="text-muted">Joined: {{ worker.joined_at | date: 'short' }}</small>
+                </li>
+              </ul>
+            </td>
+          </ng-container>
+
+          <!-- Header and Rows -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsworkerss" class="custom-header-row"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsworkerss;" class="custom-row"></tr>
+        </table>
+
+        <!-- Paginator -->
+        <mat-paginator #paginatorWorker [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+
+  <!-- Map Card -->
+  <mat-card class="trinta-card all-courses-card mb-25 bg-white border-none d-block map-card">
+    <mat-card-header>
+      <h5>Events Location Created</h5>
+    </mat-card-header>
+    <div id="map" style="height: 500px;"></div>
+  </mat-card>
+
+</div>
+
+
+    <!-- Event Progress and Workers Progress Tabs -->
+    <mat-card class="trinta-card all-courses-card mb-25 bg-white border-none d-block">
+      <mat-card-content>
+        <mat-tab-group animationDuration="500ms">
+          <mat-tab label="Event Progress">
+            <mat-card-content>
+              <div class="student-progress-table">
+                <div class="table-responsive">
+                  <table mat-table [dataSource]="dataSourceevent">
+                    
+                    <!-- Event Column -->
+                    <ng-container matColumnDef="title">
+                      <th mat-header-cell *matHeaderCellDef> Event</th>
+                      <td mat-cell *matCellDef="let worker">
+                        <div class="d-flex align-items-center">
+                          <span class="d-block lh-1 text-black">
+                            <a [routerLink]="['/events', worker.id]">{{ worker.title }}</a>
+                          </span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <!-- Acceptance Ratio Column -->
+                    <ng-container matColumnDef="acceptance_ratio">
+                      <th mat-header-cell *matHeaderCellDef>Acceptance Ratio</th>
+                      <td mat-cell *matCellDef="let worker">
+                        <div class="d-flex align-items-center">
+                          <mat-progress-bar mode="determinate" [value]="worker.acceptance_ratio"></mat-progress-bar>
+                          <span class="d-block lh-1 text-black">{{ worker.acceptance_ratio }}%</span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <!-- Participation Rate Column -->
+                    <ng-container matColumnDef="Participation_rate">
+                      <th mat-header-cell *matHeaderCellDef>Participation Rate</th>
+                      <td mat-cell *matCellDef="let worker">
+                        <div class="d-flex align-items-center">
+                          <mat-progress-bar mode="determinate" [value]="worker.participation_rate"></mat-progress-bar>
+                          <span class="d-block lh-1 text-black">{{ worker.participation_rate }}</span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <!-- Total Submissions Column -->
+                    <ng-container matColumnDef="total_submissions">
+                      <th mat-header-cell *matHeaderCellDef>Total Submissions</th>
+                      <td mat-cell *matCellDef="let worker">
+                        {{ worker.total_submissions }}
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsEvent"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsEvent;"></tr>
+                  </table>
+                </div>
+                <mat-paginator [pageSizeOptions]="[5, 8, 12]"></mat-paginator>
+              </div>
+            </mat-card-content>
+          </mat-tab>
+
+          <mat-tab label="Workers Progress">
+            <mat-card-content>
+              <div class="student-progress-table">
+                <div class="table-responsive">
+                  <table mat-table [dataSource]="dataSource">
+                    
+                    <!-- Worker Column -->
+                    <ng-container matColumnDef="user__fullName">
+                      <th mat-header-cell *matHeaderCellDef>Worker</th>
+                      <td mat-cell *matCellDef="let worker">
+                        <div class="d-flex align-items-center">
+                          <span class="d-block lh-1 text-black">{{ worker.user__fullName }}</span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <!-- Acceptance Ratio Column -->
+                    <ng-container matColumnDef="acceptance_ratio">
+                      <th mat-header-cell *matHeaderCellDef>Acceptance Ratio</th>
+                      <td mat-cell *matCellDef="let worker">
+                        <div class="d-flex align-items-center">
+                          <mat-progress-bar mode="determinate" [value]="worker.acceptance_ratio"></mat-progress-bar>
+                          <span class="d-block lh-1 text-black">{{ worker.acceptance_ratio }}%</span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                </div>
+                <mat-paginator [pageSizeOptions]="[5, 8, 12]"></mat-paginator>
+              </div>
+            </mat-card-content>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+  <!-- dashborad requester --> 
+
+
+  <div class="row"  *ngIf="isPatient() || isRequester()" >
+    
+    <div class="col-xxl-3 col-sm-6">
+      <a [routerLink]="['/Listevent']" class="card-link">
+        <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block" matTooltip="Click to view event list" matTooltipPosition="above">
+          <mat-card-content>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="title">
+                <span class="d-block text-gray">Total Events</span>
+                <h5 class="m-0">{{ total_events }}</h5>
+              </div>
+              <div class="icon d-flex align-items-center justify-content-center" >
+                <img src="assets/images/events.png" alt="Total Events">
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+  <div class="col-xxl-3 col-sm-6">
+    <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+      <mat-card-content>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="title">
+            <span class="d-block text-gray">Total joined Worker</span>
+            <h5 class="m-0">{{total_workers_joined}}</h5>
+          </div>
+          <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+            <img src="assets/images/worker.png" alt="icon" width="50" height="50">
+          </div>
+        </div>
+      
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-xxl-3 col-sm-6">
+    <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+      <mat-card-content>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="title">
+            <span class="d-block text-gray">Total data saving</span>
+            <h5 class="m-0">{{total_data_saving}}</h5>
+          </div>
+          <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+            <img src="assets/images/archive.png" alt="icon" width="50" height="50">
+          </div>
+        </div>
+      
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+ 
+  
+
+  <div class="col-xxl-3 col-sm-6">
+    <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+      <mat-card-content>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="title">
+            <span class="d-block text-gray">Total rewards</span>
+            <h5 class="m-0 text-yellow"> ${{ total_rewards }}</h5>
+          </div>
+          <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+            <img src="assets/images/reward.png" alt="icon">
+          </div>
+        </div>
+       
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12 mb-4">
+    <mat-card class="trinta-card stat-card-full bg-white border-none d-block">
+      <mat-card-content>
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Left-aligned content -->
+          <div class="d-flex align-items-center">
+            <img src="assets/images/recieve.png" alt="Total Photos Received" class="stat-icon">
+            <div class="ml-2">
+              <span class="d-block text-gray">Total Photos Received</span>
+              <h5 class="m-0">{{ total_photos_received }}</h5>
+            </div>
+          </div>
+  
+          <!-- Center-aligned content -->
+          <div class="d-flex align-items-center">
+            <img src="assets/images/request.png" alt="Total Photos Requested" class="stat-icon">
+            <div class="ml-2 text-center">
+              <span class="d-block text-gray">Total Photos Requested</span>
+              <h5 class="m-0">{{ total_photos_requested }}</h5>
+            </div>
+          </div>
+  
+          <!-- Right-aligned content -->
+          <div class="d-flex align-items-center">
+            <img src="assets/images/percent.png" alt="Acceptance Ratio" class="stat-icon">
+            <div class="ml-2 text-right">
+              <span class="d-block text-gray">Acceptance Ratio</span>
+              <h5 class="m-0">{{ acceptance_ratio }}%</h5>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Card displaying the Acceptance Ratio -->
+  
+
+
+  <div *ngIf="isRequester()"> 
+    <mat-card class="trinta-card all-projects-card mb-25 bg-white border-none d-block">
+      <mat-card-header>
+        <mat-card-title>
+          <h5 class="mt-0 mb-0">Event Statistics</h5>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="all-projects-table">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSourceRequester" matSort>
+  
+              <!-- Title Column -->
+              <ng-container matColumnDef="event_title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+                <td mat-cell *matCellDef="let element" >  <a routerLink="/events/:element.event_id" matTooltip="Click to view event details" matTooltipPosition="above" >  {{ element.event_title }}</a></td>
+              </ng-container>
+  
+              <!-- Total Photos Requested Column -->
+              <ng-container matColumnDef="total_photos_requested">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Photos Requested</th>
+                <td mat-cell *matCellDef="let element">{{element.total_photos_requested}}</td>
+              </ng-container>
+  
+              <!-- Total Photos Received Column -->
+              <ng-container matColumnDef="total_photos_received">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Photos Received</th>
+                <td mat-cell *matCellDef="let element">{{element.total_photos_received}}</td>
+              </ng-container>
+  
+              <!-- Total Workers Joined Column -->
+              <ng-container matColumnDef="total_workers_joined">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Joined Workers</th>
+                <td mat-cell *matCellDef="let element">{{element.total_workers_joined}}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="total_rewards">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Total rewards </th>
+                <td mat-cell *matCellDef="let element">${{element.total_rewards}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="total_data_saving">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Total data saving</th>
+                <td mat-cell *matCellDef="let element">{{element.total_data_saving}}</td>
+              </ng-container>
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.status === 'In Progress'" class="status-badge in-progress">
+                        In Progress
+                    </span>
+                    <span *ngIf="element.status === 'Upcoming'" class="status-badge upcoming">
+                        Upcoming
+                    </span>
+                    <span *ngIf="element.status === 'Expired'" class="status-badge expired">
+                        Expired
+                    </span>
+                </td>
+            </ng-container>
+  
+              <!-- Due Date Column -->
+             
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsRequester"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsRequester;"></tr>
+  
+            </table>
+          </div>
+          <mat-paginator [pageSizeOptions]="[5, 10, 15]" #paginatorRequester></mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- dashborad worker  --> 
+
+
+
+
+
+<div *ngIf="isWorker()">
+  <!-- Dashboard Title -->
+ 
+
+
+  
+  <!-- Stats Cards -->
+  <div class="row">
+    <div class="col-xxl-3 col-sm-6">
+      <a [routerLink]="['/Listevent']" class="card-link">
+        <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block" matTooltip="Click to view event list" matTooltipPosition="above">
+          <mat-card-content>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="title">
+                <span class="d-block text-gray">Total Events Joined</span>
+                <h5 class="m-0">{{ total_eventsJoined }}</h5>
+              </div>
+              <div class="icon d-flex align-items-center justify-content-center">
+                <img src="assets/images/events.png" alt="Total Events">
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Images Submitted</span>
+              <h5 class="m-0">{{ total_imageSubmitted }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/worker.png" alt="Total Images Submitted" width="50" height="50">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Images Approved</span>
+              <h5 class="m-0">{{ total_imageApproved }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/request.png" alt="Total Images Approved">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Total Data Consumed</span>
+              <h5 class="m-0">{{ total_data_consumed }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/archive.png" alt="Total Data Consumed">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Reward</span>
+              <h5 class="m-0"> ${{ totalEarning }}</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/reward.png" alt="Reward">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-xxl-3 col-sm-6">
+      <mat-card class="trinta-card stat-card mb-25 bg-white border-none d-block">
+        <mat-card-content>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="title">
+              <span class="d-block text-gray">Acceptance Ratio</span>
+              <h5 class="m-0">{{ acceptance_ratioWorker }}%</h5>
+            </div>
+            <div class="icon d-flex align-items-center rounded-circle justify-content-center">
+              <img src="assets/images/percent.png" alt="Acceptance Ratio">
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Current Events Section -->
+  <div class="row" *ngIf="currentEvents.length > 0">
+  
+
+    <div *ngFor="let event of currentEvents" class="col-sm-6 col-lg-4 col-xxl-3">
+      <mat-card class="event-card mb-25">
+        <mat-card-header>
+          <mat-card-title>
+            <button mat-button class="event-title" (click)="navigateToEventDetails(event.id)" matTooltip="Click to view event details" matTooltipPosition="above">
+              {{ event.title }}
+            </button>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="event-details">
+            <p class="time-left">Time Left: {{ getTimeLeft(event.deadline) }}</p>
+            <p>Total Images Submitted: {{ event.total_images_submitted }}</p>
+            <p>Total Images Approved: {{ event.total_images_approved }}</p>
+            <p>Acceptance Ratio: {{ event.acceptance_ratio }}%</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- No Current Events Message -->
+  <div *ngIf="currentEvents.length === 0" class="col-12">
+    <p>No current events to display.</p>
+  </div>
+</div>
+
+
+

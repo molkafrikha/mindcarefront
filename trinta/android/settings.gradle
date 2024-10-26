@@ -1,0 +1,14 @@
+include ':app'
+include ':capacitor-android'
+include ':capacitor-cordova-android-plugins'
+include ':capacitor-camera'
+include ':capacitor-device'
+include ':capacitor-geolocation'
+
+project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android')
+project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
+project(':capacitor-camera').projectDir = new File('../node_modules/@capacitor/camera')
+project(':capacitor-device').projectDir = new File('../node_modules/@capacitor/device')
+project(':capacitor-geolocation').projectDir = new File('../node_modules/@capacitor/geolocation')
+
+apply from: 'capacitor.settings.gradle'

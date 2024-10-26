@@ -1,0 +1,42 @@
+<div class="logout-area">
+  <div class="d-table">
+    <div class="d-table-cell">
+      <div class="trinta-form ml-auto mr-auto text-center bg-white position-relative z-1 border-radius">
+        <h5>Welcome To MindCare</h5>
+
+        <div class="title text-center">
+          <p class="text-black fs-15">
+            Already have an account? <a routerLink="/authentication"
+                                        class="text-primary fw-medium">Sign in here</a>
+          </p>
+        </div>
+
+        <div class="signup-buttons d-flex flex-column justify-content-between" >
+          <a routerLink="/authentication/signupworker" mat-button class="signup-button mb-2">
+            Sign up as Patient
+          </a>
+          
+        </div>
+        <!-- Rendering for Web -->
+        <div class="signup-buttons d-flex justify-content-between" *ngIf="!isMobile">
+          <a routerLink="/authentication/sign-up" mat-button class="signup-button">
+            Sign up as Doctor
+          </a>
+        </div>
+
+        <div class="shape1">
+          <img src="assets/images/icons/star1.svg" alt="icon">
+        </div>
+        <div class="shape2">
+          <img src="assets/images/icons/star2.svg" alt="icon">
+        </div>
+        <div class="shape3">
+          <img src="assets/images/icons/star2.svg" alt="icon">
+        </div>
+        <div class="shape4">
+          <img src="assets/images/icons/star1.svg" alt="icon">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

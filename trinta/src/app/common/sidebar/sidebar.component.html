@@ -1,0 +1,148 @@
+<div
+  class="sidebar-area bg-white transition"
+  [ngClass]="{'active': isToggled}"
+>
+  <div class="logo bg-white">
+    <a class="d-flex align-items-center">
+      <img src="assets/images/logo-icon.svg" alt="logo-icon">
+      <span class="fw-extrabold">
+                MindCare
+            </span>
+    </a>
+  </div>
+  <div
+    class="burger-menu transition cursor-pointer"
+    [ngClass]="{'active': isToggled}"
+    (click)="toggle()"
+  >
+    <span class="top-bar transition bg-dark d-block"></span>
+    <span class="middle-bar transition bg-dark d-block"></span>
+    <span class="bottom-bar transition bg-dark d-block"></span>
+  </div>
+  <ng-scrollbar visibility="hover">
+    <div class="sidebar-inner">
+      <div class="sidebar-menu">
+        <mat-accordion>
+                    <span class="sub-title text-body">
+                        MAIN
+                    </span>
+
+          <a (click)="handleClick()" routerLink="/Dashboard" class="sidebar-menu-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i-feather name="home"></i-feather>
+            <span class="title">
+                            Dashboard
+            </span>
+          </a>
+
+
+
+          <span class="sub-title text-body">
+                        PAGES
+                    </span>
+
+
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
+            <mat-expansion-panel-header>
+              <mat-panel-title >
+                <i-feather name="users"></i-feather>
+                <span class="title" *ngIf="isAdmin()">
+                                    Users
+                                </span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="sidebar-sub-menu">
+              <li class="sidemenu-item" (click)="handleClick()">
+                <a routerLink="/invitation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Pending Requesters
+                  <span *ngIf="notApprovedCount > 0" class="badge-custom">
+                    {{ notApprovedCount }}
+                  </span>
+                </a>
+              </li>
+              <li class="sidemenu-item" (click)="handleClick()">
+                <a routerLink="allusers" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  All Users
+                </a>
+              </li>
+
+            </ul>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel (opened)="panelOpenState = true"  (closed)="panelOpenState = true">
+            <mat-expansion-panel-header>
+              <mat-panel-title >
+                <i-feather name="coffee"></i-feather>
+                <span class="title">
+                                    Events
+                                </span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="sidebar-sub-menu">
+              <li class="sidemenu-item" (click)="handleClick()">
+                
+               
+                <a *ngIf="isRequester()  || isPatient()" routerLink="/Listevent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  My events
+                </a>
+                <a *ngIf="isWorker() || isPatient()" routerLink="/NotjoinedEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  New Events
+                </a>
+              </li>
+              <li class="sidemenu-item" *ngIf="isAdmin()" (click)="handleClick()">
+                <a routerLink="/Requestworker" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Worker Join request
+                  <span *ngIf="pendingWorkersCount > 0" class="badge-custom">
+                   {{pendingWorkersCount}}
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidemenu-item" *ngIf="isRequester()  || isPatient()" (click)="handleClick()">
+                <a routerLink="/CreateEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Create An Event
+                </a>
+              </li>
+
+            </ul>
+          </mat-expansion-panel>
+
+
+
+
+          <span class="sub-title text-body">
+                        OTHERS
+                    </span>
+
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
+            <mat-expansion-panel-header>
+              <mat-panel-title >
+                <i-feather name="settings"></i-feather>
+                <span class="title">
+                                    Settings
+                                </span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="sidebar-sub-menu">
+              <li class="sidemenu-item" (click)="handleClick()">
+                <a routerLink="/settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Account Settings
+                </a>
+              </li>
+              <li class="sidemenu-item" (click)="handleClick()">
+                <a routerLink="/settings/change-password" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Change Password
+                </a>
+              </li>
+
+            </ul>
+          </mat-expansion-panel>
+
+          <a routerLink="" class="sidebar-menu-link" routerLinkActive="active" (click)="logout()" [routerLinkActiveOptions]="{exact: true}">
+            <i-feather name="home"></i-feather>
+            <span class="title">Logout</span>
+          </a>
+        </mat-accordion>
+      </div>
+    </div>
+  </ng-scrollbar>
+</div>

@@ -1,0 +1,35 @@
+<!-- Gallery Style - 1 -->
+<mat-card class="trinta-card gallery-card mb-25 bg-white border-none d-block">
+    <mat-card-header>
+        <mat-card-title>
+            <h5 class="mt-0 mb-0">
+                All approved submissions for event : {{ event_name }}
+            </h5>
+        </mat-card-title>
+    </mat-card-header>
+  <mat-card-content>
+    <div class="row gallery-list">
+      <div
+        *ngFor="let submission of approvedSubmissions; let i = index"
+        class="col-lg-3 col-sm-4 col-md-4 mb-25"
+      >
+        <img [src]="submission.photos?.[0].image" class="border-radius" alt="gallery-image">
+        <span>Submitted at : {{ submission.photos?.[0].created_at | date: 'yyyy-MM-dd HH:mm:ss' }} </span>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+<!-- Pagination Controls -->
+<!-- Pagination Controls -->
+<div class="pagination-controls" *ngIf="totalPages >= 1">
+  <button mat-icon-button color="primary" (click)="previousPage()" [disabled]="currentPage === 1">
+    <mat-icon>keyboard_arrow_left</mat-icon> <!-- Previous icon -->
+  </button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button mat-icon-button color="primary" (click)="nextPage()" [disabled]="currentPage === totalPages">
+    <mat-icon>keyboard_arrow_right</mat-icon> <!-- Next icon -->
+  </button>
+</div>
+
+

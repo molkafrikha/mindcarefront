@@ -1,0 +1,133 @@
+
+<div class="row">
+  <div *ngIf="isAdmin()">
+    <app-overviews />
+  </div>
+
+  <!-- Display message -->
+  <div *ngIf="message" class="alert alert-info">
+    {{ message }}
+  </div>
+
+  <!-- Check if events array is available and not empty -->
+  <ng-container *ngIf="displayedEvents && displayedEvents.length > 0; else emptyList">
+<div  class="row">
+  <div  *ngFor="let event of displayedEvents" class="col-md-6 col-xxl-4">
+    <mat-card
+      class="trinta-card team-card mb-25 bg-white border-none d-block"
+    >
+      <mat-card-content>
+        <div class="d-flex align-items-center justify-content-between">
+          <h6 class="m-0">
+            {{ event.title }}
+          </h6>
+        </div>
+        <p class="fs-15">
+          <b>Requester : </b> {{ event.requester_organization_name }}
+        </p>
+
+        <p class="fs-15 event-description">
+          {{ event.description }}
+        </p>
+
+        <ul class="list p-0 m-0 list-unstyled ">
+          <li class="d-inline-block">
+                        <span class="d-block heading-font-family fw-medium">
+                            Starting at
+                        </span>
+            <span class="d-block text-body fw-semibold">
+                            {{ event.startdate | date }}
+                        </span>
+          </li>
+          <li class="d-inline-block">
+                        <span class="d-block heading-font-family fw-medium">
+                            Deadline
+                        </span>
+            <span class="d-block text-body fw-semibold">
+                             {{ event.deadline | date }}
+                        </span>
+          </li>
+
+
+        </ul>
+
+
+        <ul class="list p-0 mt-10 list-unstyled">
+          <li class="d-inline-block">
+                        <span class="d-block heading-font-family fw-medium">
+                            Max Photos
+                        </span>
+            <span class="d-block text-body fw-semibold">
+                            {{ event.numberOfPhotos }}
+                        </span>
+          </li>
+        
+
+
+        </ul>
+        <div class="info d-xxxl-flex align-items-center justify-content-between">
+          <div class="user d-flex align-items-center">
+            <mat-icon class="material-icons rounded-circle" style="background: #EEE; padding: 10px;">emoji_events
+            </mat-icon>
+            <div>
+              <h6>
+                Event Reward
+              </h6>
+              <span class="d-block text-body">
+       {{ event.cost | currency }}
+    </span>
+            </div>
+          </div>
+          <ng-container >
+            <div class="button-row">
+              <!-- Dynamic button based on worker status -->
+              <ng-container *ngIf="getWorkerStatus(event) === 'APPROVED'; else joinButton">
+                <button mat-button disabled class="left-btn">
+                  <mat-icon>check_circle</mat-icon> Joined
+                </button>
+              </ng-container>
+              <ng-template #joinButton>
+                <ng-container *ngIf="getWorkerStatus(event) === 'PENDING'; else joinEventButton">
+                  <div class="pending-approval" (click)="deleteWorkerJoin(event.joined_patients[0].id)">
+                    <mat-icon>hourglass_empty</mat-icon> Pending Approval
+                  </div>
+                </ng-container>
+                
+                <ng-template #joinEventButton>
+                  <button class="default-btn left-btn" mat-button (click)="joinEvent(event.id)">
+                    <mat-icon>add</mat-icon> <!-- Using 'add' icon to symbolize 'join' -->
+                    Join Event
+                  </button>
+                </ng-template>
+
+              <!-- Static button for viewing details -->
+              <button class="default-btn right-btn" mat-button [routerLink]="['/events', event.id]"> <mat-icon>visibility</mat-icon>View Details</button>
+              </ng-template>
+            </div>
+          </ng-container>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+    <!-- Show More Button -->
+    <div class="col-12 text-center mt-3">
+      <button *ngIf="displayedEvents.length < allEvents.length" mat-button (click)="showMoreEvents()">
+        Read More
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- Template for empty events list -->
+  <ng-template #emptyList>
+    <div class="col-12">
+      <p class="text-center no-events">
+        <mat-icon>event_busy</mat-icon>
+        No new events available for the moment.
+      </p>
+    </div>
+  </ng-template>
+
+</div>

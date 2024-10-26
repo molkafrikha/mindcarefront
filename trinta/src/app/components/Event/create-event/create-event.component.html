@@ -1,0 +1,133 @@
+<mat-card class="trinta-card create-an-event-card mb-25 bg-white border-none d-block">
+  <mat-card-header>
+    <mat-card-title>
+      <h5 class="mt-0 mb-0">Create An Event</h5>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #eventForm="ngForm" (ngSubmit)="createEvent(eventForm)">
+      <div class="row">
+        <div class="col-lg-12">
+          <label class="label d-block fw-medium mb-10">Event title</label>
+          <mat-form-field>
+            <i-feather name="edit-3"></i-feather>
+            <mat-label>Event title</mat-label>
+            <input matInput [(ngModel)]="eventData.title" name="title" required #title="ngModel">
+            <mat-error *ngIf="title.invalid && title.touched">Event title is required</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="col-lg-12">
+          <label class="label d-block fw-medium mb-10">Event Description</label>
+          <mat-form-field>
+            <i-feather name="edit-3"></i-feather>
+            <mat-label>Event description</mat-label>
+            <input matInput [(ngModel)]="eventData.description" name="description" required #description="ngModel">
+            <mat-error *ngIf="description.invalid && description.touched">Description is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Map Section -->
+        <div>
+          <div id="map" style="height: 400px;"></div>
+
+
+          <div class="coordinate-inputs" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <mat-form-field style="flex: 1; margin-right: 10px;">
+              <mat-label>Latitude</mat-label>
+              <input matInput [(ngModel)]="eventData.location.lat" name="latitude" (ngModelChange)="updateMarkerPosition()" placeholder="Enter Latitude">
+            </mat-form-field>
+
+            <mat-form-field style="flex: 1; margin-right: 10px;">
+              <mat-label>Longitude</mat-label>
+              <input matInput [(ngModel)]="eventData.location.lng" name="longitude" (ngModelChange)="updateMarkerPosition()" placeholder="Enter Longitude">
+            </mat-form-field>
+
+            <mat-form-field style="flex: 1;">
+              <mat-label>Place ID</mat-label>
+              <input matInput [(ngModel)]="eventData.location.placeId" name="placeId" placeholder="Place ID" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Coverage Area Section -->
+        <div class="col-lg-12">
+          <label class="label d-block fw-medium mb-10">Coverage Area</label>
+          <mat-form-field>
+            <i-feather name="map"></i-feather>
+            <mat-label>Enter Coverage Area in meter</mat-label>
+            <input matInput [(ngModel)]="eventData.CoverageArea" name="CoverageArea" required #CoverageArea="ngModel">
+            <mat-error *ngIf="CoverageArea.invalid && CoverageArea.touched">Coverage Area is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Date Section -->
+ 
+        <!-- Date Section -->
+        <div class="row">
+          <div class="col-lg-6">
+            <label class="label d-block fw-medium mb-10">Start Date</label>
+            <mat-form-field class="full-width">
+              <i-feather name="calendar"></i-feather>
+              <mat-label>Select Start Date</mat-label>
+              <input matInput [matDatepicker]="picker1" [formControl]="startDateControl" [(ngModel)]="eventData.startdate" name="startdate" (dateChange)="validateDates(eventForm)">
+              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error *ngIf="startDateControl.hasError('required')">Start Date is required</mat-error>
+              <mat-error *ngIf="startDateControl.hasError('dateInPast')">This date is in the past</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <label class="label d-block fw-medium mb-10">Event Deadline</label>
+            <mat-form-field class="full-width">
+              <i-feather name="calendar"></i-feather>
+              <mat-label>Select Deadline</mat-label>
+              <input matInput [matDatepicker]="picker2" [formControl]="deadlineControl" (dateChange)="validateDates(eventForm)" [(ngModel)]="eventData.deadline" name="deadline">
+              <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+              <mat-error *ngIf="deadlineControl.hasError('required')">Deadline is required</mat-error>
+              <mat-error *ngIf="deadlineControl.hasError('dateInPast')">This date is in the past</mat-error>
+              <mat-error *ngIf="deadlineControl.hasError('deadlineBeforeStart')">Deadline must be after the start date</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Cost Section -->
+        <div class="col-lg-12">
+          <label class="label d-block fw-medium mb-10">Cost</label>
+          <mat-form-field>
+            <i-feather name="dollar-sign"></i-feather>
+            <mat-label>Enter cost</mat-label>
+            <input matInput [(ngModel)]="eventData.cost" name="cost" required #cost="ngModel">
+            <mat-error *ngIf="cost.invalid && cost.touched">Cost is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Photos Section -->
+        <div class="col-lg-12">
+          <label class="label d-block fw-medium mb-10">Number of Request Photos</label>
+          <mat-form-field>
+            <i-feather name="camera"></i-feather>
+            <mat-label>Enter number</mat-label>
+            <input matInput [(ngModel)]="eventData.numberOfPhotos" name="numberOfPhotos" required #numberOfPhotos="ngModel">
+            <mat-error *ngIf="numberOfPhotos.invalid && numberOfPhotos.touched">Number of request photos is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-12">
+          <label class="label d-block fw-medium mb-10">Max photos per worker</label>
+          <mat-form-field>
+            <i-feather name="camera"></i-feather>
+            <mat-label>Enter number</mat-label>
+            <input matInput [(ngModel)]="eventData.max_photos_per_worker" name="MaxPhotos" required #numberOfPhotos="ngModel">
+            <mat-error *ngIf="numberOfPhotos.invalid && numberOfPhotos.touched">Number of request photos is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="save-event-btn">
+        <button mat-button type="submit" [disabled]="!eventForm.valid">Publish Event</button>
+        <button mat-button type="button">Cancel</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

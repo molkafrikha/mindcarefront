@@ -1,0 +1,224 @@
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+@media only screen and (max-width : 767px) {
+
+  .trinta-card {
+    &.team-card {
+      .mat-mdc-card-content {
+        h6 {
+          font-size: 16px;
+        }
+        .action {
+          .mat-mdc-button {
+            margin-right: 12px;
+
+            i-feather {
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
+        .users {
+          margin: {
+            top: 15px;
+            bottom: 20px;
+          };
+          .user {
+            margin-right: 2px;
+
+            img {
+              height: 45px;
+              width: 45px;
+            }
+          }
+          .number {
+            margin-left: 5px;
+            height: 45px;
+            width: 45px;
+          }
+        }
+        .list {
+          li {
+            margin-right: 25px;
+
+            span {
+              &:nth-child(1) {
+                letter-spacing: .5px;
+              }
+            }
+          }
+        }
+        .info {
+          margin-top: 15px;
+
+          .user {
+            margin-bottom: 15px;
+
+            img {
+              height: 65px;
+              width: 65px;
+            }
+            h6 {
+              font-size: 15px;
+              margin-bottom: 7px;
+            }
+          }
+          .default-btn {
+            &.mat-mdc-button {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* Min width 1600px */
+@media only screen and (min-width: 767px) {
+
+  .trinta-card {
+    &.team-card {
+      .mat-mdc-card-content {
+        .list {
+          li {
+            margin-right: 45px;
+          }
+        }
+        .info {
+          .user {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+}
+.material-icons.rounded-circle {
+  /* Ensure the icon has a rounded background */
+  border-radius: 50%;
+  color: #555; /* Icon color */
+  font-size: 24px; /* Icon size */
+  display: flex; /* Aligns the icon centrally */
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Matching the size of your user images */
+  height: 40px; /* Matching the size of your user images */
+  border: 1px solid #DDD; /* Optional border */
+  margin-right: 20px;
+}
+
+
+.event-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.2em; /* approximately twice the line height */
+}
+.default-btn {
+  margin-top: 15px;
+  border: 1px solid #007BFF; /* Blue border */
+  background-color: transparent; /* Transparent background */
+  color: #007BFF; /* Blue text color to match the border */
+  padding: 8px 16px; /* Padding around text and icon */
+  display: inline-flex; /* Inline flex to align icon and text */
+  align-items: center; /* Vertical alignment */
+  justify-content: center; /* Horizontal alignment */
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.2s, color 0.2s; /* Smooth transition for hover effects */
+}
+
+.default-btn mat-icon {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.default-btn:hover {
+  background-color: #e3f2fd; /* Slight blue background on hover */
+  color: #0056b3; /* Darker blue text on hover */
+}
+.no-events {
+  color: #6c757d; /* Dim gray text color for a subtle look */
+  font-size: 16px; /* Appropriate text size */
+  padding: 20px; /* Padding for better spacing */
+  font-style: italic; /* Italicize the text to differentiate it from other content */
+  border: 1px solid #ced4da; /* Light border for emphasis */
+  background-color: #f8f9fa; /* Very light background to pop out */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow for depth */
+}
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-btn {
+  /* Styling for the left-aligned button */
+  background-color: #f0f0f0; /* Light grey background */
+  color: #333; /* Dark text color */
+  border: 1px solid #ccc; /* Subtle border */
+}
+
+.right-btn {
+  /* Styling for the right-aligned button */
+  background-color: #5694d6; /* Primary blue background */
+  color: white; /* White text color */
+  border: none; /* No border */
+}
+
+.default-btn {
+  padding: 8px 10px; /* Padding for better touch target */
+  border-radius: 4px; /* Rounded corners */
+  text-transform: uppercase; /* Uppercase text for a consistent design language */
+  font-weight: 500; /* Medium font weight for better readability */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  font-size: 12px;
+
+}
+
+.pending-approval {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background-color: #fff1dd; /* Gray background to indicate it's disabled */
+  color: #666; /* Darker text to show it's not active */
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-right: 10px; /* Space from the next button */
+  margin-top: 15px; /* Space from the next button */
+}
+
+.pending-approval mat-icon {
+  margin-right: 15px; /* Space between the icon and text */
+}
+.default-btn.left-btn {
+  font-size: 12px;
+
+  background-color: rgba(76, 175, 80, 0.64); /* Green background */
+  color: white; /* White text for better contrast */
+  padding: 8px 10px; /* Adequate padding around text and icon */
+  border-radius: 4px; /* Rounded corners */
+  display: inline-flex; /* Align items inline with flexbox for icon and text alignment */
+  align-items: center; /* Vertical center alignment */
+  justify-content: center; /* Center content horizontally */
+  text-transform: uppercase; /* Uppercase text for a consistent design language */
+  font-weight: 500; /* Medium font weight for better readability */
+  transition: background-color 0.3s; /* Smooth transition for hover effects */
+}
+
+
+
+.default-btn.left-btn mat-icon {
+  margin-right: 8px; /* Space between the icon and text */
+}

@@ -1,0 +1,28 @@
+.trinta-card {
+    &.gallery-card {
+        .mat-mdc-card-content {
+            .gallery-list {
+                margin-bottom: -25px;
+            }
+        }
+    }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom:  20px;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  color: #0b3a88; /* Matching the blue color of the spinner */
+  background: rgba(229, 229, 229, 0.91);
+}
+
+.pagination-controls span {
+  font-weight: bold;
+  color: #007bff; /* Matching the blue color of the spinner */
+}

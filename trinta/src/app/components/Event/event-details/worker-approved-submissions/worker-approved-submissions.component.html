@@ -1,0 +1,20 @@
+<!-- Gallery Style - 1 -->
+<mat-card class="trinta-card gallery-card mb-25 bg-white border-none d-block">
+    <mat-card-header>
+        <mat-card-title>
+            <h5 class="mt-0 mb-0">
+                Approved submissions for worker : {{ fullName }}
+            </h5>
+        </mat-card-title>
+    </mat-card-header>
+  <mat-card-content>
+    <div class="row gallery-list">
+      <div
+        *ngFor="let submission of approvedSubmissions; let i = index"
+        class="col-lg-3 col-sm-4 col-md-4 mb-25"
+      >
+        <img [src]="submission.photos?.[0].image" class="border-radius" alt="gallery-image">
+        <span>Submitted at : {{ submission.photos?.[0].created_at | date: 'yyyy-MM-dd HH:mm:ss' }} </span>
+      </div>
+    </div>
+  </mat-card-content></mat-card>

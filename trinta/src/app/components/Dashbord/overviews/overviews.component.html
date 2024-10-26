@@ -1,0 +1,68 @@
+<mat-card class="trinta-card website-overview-card mb-25 bg-black text-white border-none d-block position-relative z-1">
+    <mat-card-header>
+        <mat-card-title>
+            <h5 class="mt-0 mb-0 text-white">
+                Website Overview
+            </h5>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <span class="trending d-block text-white position-relative">
+                <i class="material-symbols-outlined">trending_up</i> Total <span class="fw-semibold">30.5%</span> Conversion Rate
+            </span>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 col-xxxl-2">
+                <div class="stat-box">
+                    <h6>
+                        <i class="material-icons stat-icon">people</i> All users
+                    </h6>
+                    <p>{{ totalUsers }}</p>
+                    <!-- Content for Total Users -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xxxl-2">
+                <div class="stat-box">
+                    <h6>
+                        <i class="material-icons stat-icon">event</i> All event created today
+                    </h6>
+                    <p>{{ totalEventsToday }}</p>
+                    <!-- Content for Today's Events -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xxxl-2">
+                <div class="stat-box">
+                    <h6>
+                        <i class="material-icons stat-icon">chat</i> All interaction
+                    </h6>
+                    <!-- Content for All Interaction -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xxxl-2">
+                <div class="stat-box">
+                    <h6>
+                        <i class="material-icons stat-icon">attach_money</i> All Spending
+                    </h6>
+                    <!-- Content for All Spending -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xxxl-2">
+                <div class="stat-box">
+                    <h6>
+                        <i class="material-icons stat-icon">money_off</i> Expected Earnings
+                    </h6>
+                    <!-- Content for Expected Earnings -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xxxl-2">
+                <div class="stat-box">
+                    <h6>
+                        <i class="material-icons stat-icon">calendar_today</i> Week Report
+                    </h6>
+                    <!-- Content for Week Report -->
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

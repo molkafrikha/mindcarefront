@@ -1,0 +1,52 @@
+<div class="header-area bg-white box-shadow transition" [ngClass]="{'active': isToggled}">
+  <div class="d-flex align-items-center justify-content-between">
+    <!-- Left side: Burger Menu -->
+    <div class="header-left-side d-flex align-items-center">
+      <div class="burger-menu position-relative transition lh-1" [ngClass]="{'active': isToggled}" (click)="toggle()">
+        <i-feather name="align-left"></i-feather>
+      </div>
+    </div>
+
+    <!-- Right side: User Info -->
+    <div class="header-right-side d-flex align-items-center">
+      <ul class="d-flex align-items-center m-0 p-0 list-unstyled">
+        <li>
+          <div class="menu-header d-flex align-items-center">
+            <button *ngIf="role==='Patient'" mat-button [matMenuTriggerFor]="profileMenu" class="profile-menu-btn">
+              <img src="assets/images/9187604.png" class="rounded-circle" alt="admin-image">
+            </button>
+            <button *ngIf="role==='Doctor'" mat-button [matMenuTriggerFor]="profileMenu" class="profile-menu-btn">
+              <img src="assets/images/company.png" class="rounded-circle" alt="admin-image">
+            </button>
+            <button *ngIf="role==='Admin'" mat-button [matMenuTriggerFor]="profileMenu" class="profile-menu-btn">
+              <img src="assets/images/adminn.png" class="rounded-circle" alt="admin-image">
+            </button>
+            <div class="title" style="margin-left: 10px;">
+              <a  class="d-inline-block fw-medium">
+                {{name}}
+              </a>
+              <span class="designation d-block text-body">{{role}}</span>
+            </div>
+          </div>
+
+          <mat-menu class="profile-menu-dropdown" #profileMenu="matMenu" xPosition="before">
+            <ul class="menu-body pl-0 mb-0 mt-0 list-unstyled">
+
+
+              <li class="position-relative transition fw-medium">
+                <i class="material-symbols-outlined">settings</i>
+                Settings
+                <a routerLink="/settings/change-password" class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
+              </li>
+              <li (click)="logout()" class="position-relative transition fw-medium">
+                <i class="material-symbols-outlined">logout</i>
+                Logout
+
+              </li>
+            </ul>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

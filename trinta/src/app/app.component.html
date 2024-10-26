@@ -1,0 +1,18 @@
+<div
+  [ngClass]="{'blank-page': isBlankPage()}"
+  [class.dark-theme]="toggleService.isDark()"
+>
+  <!-- Sidebar -->
+  <app-sidebar *ngIf="!isBlankPage()"></app-sidebar>
+
+  <!-- Main Content -->
+  <div
+    class="main-content transition d-flex flex-column"
+    [ngClass]="{'active': isToggled}"
+  >
+    <app-header *ngIf="!isBlankPage()"></app-header>
+    <router-outlet></router-outlet>
+    <div class="flex-grow-1"></div>
+    <app-footer></app-footer>
+  </div>
+</div>

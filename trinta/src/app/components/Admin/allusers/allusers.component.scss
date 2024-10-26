@@ -1,0 +1,1232 @@
+.trinta-card {
+    &.users-list-card {
+        .users-list-table {
+            .mat-mdc-table {
+                width: 100%;
+                overflow: hidden;
+                background-color: transparent;
+
+                .mat-mdc-header-row {
+                    height: auto;
+                    line-height: initial;
+                    letter-spacing: 0.14px;
+                    color: var(--darkColor);
+                    background: transparent;
+                    font: {
+                        weight: 500;
+                        size: var(--fontSize);
+                        family: var(--fontFamily);
+                    };
+                    .mat-mdc-header-cell {
+                        border: none;
+                        overflow: unset;
+                        text-align: start;
+                        white-space: nowrap;
+                        line-height: initial;
+                        padding: 0 15px 15px;
+                        letter-spacing: normal;
+                        background: transparent;
+                        border-bottom: 2px solid #edeff5;
+                    }
+                }
+                .mat-mdc-row, .mdc-data-table__content {
+                    line-height: initial;
+                    background: transparent;
+                    font: {
+                        weight: normal;
+                        size: var(--fontSize);
+                        family: var(--fontFamily);
+                    };
+                }
+                .mat-mdc-row {
+                    height: auto;
+                    color: var(--blackColor);
+                }
+                .mat-mdc-cell {
+                    border: none;
+                    overflow: hidden;
+                    text-align: start;
+                    padding: 18px 15px;
+                    white-space: nowrap;
+                    line-height: initial;
+                    letter-spacing: 0.14px;
+                    background: transparent;
+                    border-bottom: 1px solid #edeff5;
+
+                    .user-info {
+                        .image {
+                            width: 53px;
+                            height: 53px;
+                            border-radius: 50%;
+                            margin-right: 15px;
+
+                            img {
+                                border-radius: 50%;
+                            }
+                        }
+                        .info {
+                            h6 {
+                                margin-bottom: 7px;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                    .trinta-badge {
+                        font-size: 12px;
+                        color: #00b69b;
+                        border-radius: 2px;
+                        padding: 1.5px 7px;
+                        letter-spacing: 1px;
+                        background: rgba(0, 182, 155, 0.10);
+
+                        &.deactive {
+                            color: var(--dangerColor);
+                            background: rgba(238, 54, 140, 0.10);
+                        }
+                        &.converted {
+                            color: #ee8336;
+                            background: rgba(238, 131, 54, 0.10);
+                        }
+                    }
+                    .action {
+                        .mat-mdc-button {
+                            font-size: 18px;
+                            color: #818093;
+                            margin-right: 12px;
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            .mat-mdc-paginator {
+                padding-top: 15px;
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .trinta-card {
+        &.users-list-card {
+            .users-list-table {
+                .mat-mdc-table {
+                    .mat-mdc-header-row {
+                        font-size: 13px;
+                    }
+                    .mat-mdc-row, .mdc-data-table__content {
+                        font-size: 13px;
+                    }
+                    .mat-mdc-cell {
+                        padding: 15px;
+    
+                        .user-info {
+                            .image {
+                                margin-right: 12px;
+                            }
+                            .info {
+                                h6 {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                        .trinta-badge {
+                            font-size: 11px;
+                        }
+                        .action {
+                            .mat-mdc-button {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .trinta-card {
+        &.users-list-card {
+            .users-list-table {
+                .mat-mdc-table {
+                    .mat-mdc-cell {
+                        padding: 15px;
+    
+                        .user-info {
+                            .info {
+                                h6 {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                        .action {
+                            .mat-mdc-button {
+                                font-size: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgb(217, 218, 238);
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+  
+  .thead-dark {
+    background-color: #8b959e;
+    color: #ffffff;
+  }
+
+
+  .trinta-card {
+    &.team-card {
+        .mat-mdc-card-content {
+            h6 {
+                font-size: 18px;
+            }
+            .action {
+                .mat-mdc-button {
+                    color: #818093;
+                    margin-right: 12px;
+
+                    i-feather {
+                        width: 18px;
+                        height: 18px;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            p {
+                margin-top: 10px;
+            }
+            .users {
+                margin: {
+                    top: 20px;
+                    bottom: 25px;
+                };
+                .user {
+                    margin-right: 4px;
+
+                    img {
+                        margin-bottom: -6px;
+                        height: 52px;
+                        width: 52px;
+                    }
+                    .dot {
+                        top: 0;
+                        left: 0;
+                        width: 12px;
+                        height: 12px;
+                        position: absolute;
+                        border: 2px solid var(--whiteColor);
+                    }
+                }
+                .number {
+                    background-color: rgba(0, 182, 155, 0.10);
+                    margin-left: 10px;
+                    color: #00b69b;
+                    height: 52px;
+                    width: 52px;
+                }
+            }
+            .info {
+                margin-top: 25px;
+
+                .list {
+                    li {
+                        margin-right: 35px;
+    
+                        span {
+                            &:nth-child(1) {
+                                letter-spacing: 1px;
+                                margin-bottom: 7px;
+                            }
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+                .default-btn {
+                    &.mat-mdc-button {
+                        height: auto;
+                        min-width: auto;
+                        margin-top: 23px;
+                        border-radius: 6px;
+                        padding: 10px 15px 11px;
+                        color: var(--primaryColor);
+                        background: rgba(55, 97, 238, 0.10);
+                        font: {
+                            size: 14px;
+                            weight: 600;
+                            family: var(--headingFontFamily);
+                        };
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .trinta-card {
+        &.team-card {
+            .mat-mdc-card-content {
+                h6 {
+                    font-size: 16px;
+                }
+                .action {
+                    .mat-mdc-button {
+                        margin-right: 12px;
+    
+                        i-feather {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+                .users {
+                    margin: {
+                        top: 15px;
+                        bottom: 20px;
+                    };
+                    .user {
+                        margin-right: 2px;
+    
+                        img {
+                            height: 45px;
+                            width: 45px;
+                        }
+                    }
+                    .number {
+                        margin-left: 5px;
+                        height: 45px;
+                        width: 45px;
+                    }
+                }
+                .info {
+                    margin-top: 15px;
+    
+                    .list {
+                        li {
+                            margin-right: 25px;
+        
+                            span {
+                                &:nth-child(1) {
+                                    letter-spacing: .5px;
+                                }
+                            }
+                        }
+                    }
+                    .default-btn {
+                        &.mat-mdc-button {
+                            margin-top: 15px;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .trinta-card {
+        &.team-card {
+            .mat-mdc-card-content {
+                h6 {
+                    font-size: 17px;
+                }
+                .users {
+                    margin: {
+                        top: 20px;
+                        bottom: 20px;
+                    };
+                    .user {
+                        img {
+                            height: 48px;
+                            width: 48px;
+                        }
+                    }
+                    .number {
+                        height: 48px;
+                        width: 48px;
+                    }
+                }
+                .info {
+                    margin-top: 20px;
+    
+                    .list {
+                        li {
+                            margin-right: 30px;
+                        }
+                    }
+                    .default-btn {
+                        &.mat-mdc-button {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {
+
+    .trinta-card {
+        &.team-card {
+            .mat-mdc-card-content {
+                .info {
+                    .list {
+                        li {
+                            margin-right: 45px;
+                        }
+                    }
+                    .default-btn {
+                        &.mat-mdc-button {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+.trinta-card {
+    &.all-events-card {
+        .mat-mdc-card-content {
+            .all-events-table {
+                .mat-mdc-table {
+                    width: 100%;
+                    overflow: hidden;
+                    background-color: transparent;
+            
+                    .mat-mdc-header-row {
+                        height: auto;
+                        line-height: initial;
+                        letter-spacing: 0.14px;
+                        color: var(--darkColor);
+                        background: transparent;
+                        font: {
+                            weight: 500;
+                            size: var(--fontSize);
+                            family: var(--fontFamily);
+                        };
+                        .mat-mdc-header-cell {
+                            border: none;
+                            overflow: unset;
+                            text-align: start;
+                            white-space: nowrap;
+                            line-height: initial;
+                            padding: 0 15px 15px;
+                            letter-spacing: normal;
+                            background: transparent;
+                            border-bottom: 2px solid #edeff5;
+                        }
+                    }
+                    .mat-mdc-row, .mdc-data-table__content {
+                        line-height: initial;
+                        background: transparent;
+                        font: {
+                            weight: normal;
+                            size: var(--fontSize);
+                            family: var(--fontFamily);
+                        };
+                    }
+                    .mat-mdc-row {
+                        height: auto;
+                        color: var(--blackColor);
+                    }
+                    .mat-mdc-cell {
+                        border: none;
+                        padding: 18px;
+                        overflow: hidden;
+                        text-align: start;
+                        white-space: nowrap;
+                        line-height: initial;
+                        letter-spacing: 0.14px;
+                        background: transparent;
+                        border-bottom: 1px solid #edeff5;
+            
+                        .event-info {
+                            .image {
+                                width: 52px;
+                                margin-right: 16px;
+                                border-radius: 6px;
+            
+                                img {
+                                    border-radius: 6px;
+                                }
+                            }
+                            .info {
+                                a {
+                                    margin-bottom: 8px;
+                                    font: {
+                                        size: 15px;
+                                        family: var(--headingFontFamily);
+                                    };
+                                }
+                            }
+                        }
+                        .action {
+                            .mat-mdc-button {
+                                font-size: 18px;
+                                color: #818093;
+                                margin-right: 12px;
+            
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .mat-mdc-paginator {
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .trinta-card {
+        &.all-events-card {
+            .mat-mdc-card-content {
+                .all-events-table {
+                    .mat-mdc-table {
+                        .mat-mdc-header-row {
+                            font-size: 13px;
+                        }
+                        .mat-mdc-row, .mdc-data-table__content {
+                            font-size: 13px;
+                        }
+                        .mat-mdc-cell {
+                            padding: 15px;
+                
+                            .event-info {
+                                .image {
+                                    margin-right: 12px;
+                                }
+                                .info {
+                                    a {
+                                        font-size: 13px;
+                                    }
+                                }
+                            }
+                            .action {
+                                .mat-mdc-button {
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .trinta-card {
+        &.all-events-card {
+            .mat-mdc-card-content {
+                .all-events-table {
+                    .mat-mdc-table {
+                        .mat-mdc-cell {
+                            padding: 15px;
+                
+                            .event-info {
+                                .image {
+                                    margin-right: 15px;
+                                }
+                                .info {
+                                    a {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                            .action {
+                                .mat-mdc-button {
+                                    font-size: 17px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+.trinta-card {
+    &.team-card {
+        .mat-mdc-card-content {
+            h6 {
+                font-size: 18px;
+            }
+            .action {
+                .mat-mdc-button {
+                    color: #818093;
+                    margin-right: 12px;
+
+                    i-feather {
+                        width: 18px;
+                        height: 18px;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            p {
+                margin-top: 10px;
+            }
+            .users {
+                margin: {
+                    top: 20px;
+                    bottom: 25px;
+                };
+                .user {
+                    margin-right: 4px;
+
+                    img {
+                        margin-bottom: -6px;
+                        height: 52px;
+                        width: 52px;
+                    }
+                    .dot {
+                        top: 0;
+                        left: 0;
+                        width: 12px;
+                        height: 12px;
+                        position: absolute;
+                        border: 2px solid var(--whiteColor);
+                    }
+                }
+                .number {
+                    background-color: rgba(0, 182, 155, 0.10);
+                    margin-left: 10px;
+                    color: #00b69b;
+                    height: 52px;
+                    width: 52px;
+                }
+            }
+            .info {
+                margin-top: 25px;
+
+                .list {
+                    li {
+                        margin-right: 35px;
+
+                        span {
+                            &:nth-child(1) {
+                                letter-spacing: 1px;
+                                margin-bottom: 7px;
+                            }
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+                .default-btn {
+                    &.mat-mdc-button {
+                        height: auto;
+                        min-width: auto;
+                        margin-top: 23px;
+                        border-radius: 6px;
+                        padding: 10px 15px 11px;
+                        color: var(--primaryColor);
+                        background: rgba(55, 97, 238, 0.10);
+                        font: {
+                            size: 14px;
+                            weight: 600;
+                            family: var(--headingFontFamily);
+                        };
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .trinta-card {
+        &.team-card {
+            .mat-mdc-card-content {
+                h6 {
+                    font-size: 16px;
+                }
+                .action {
+                    .mat-mdc-button {
+                        margin-right: 12px;
+
+                        i-feather {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+                .users {
+                    margin: {
+                        top: 15px;
+                        bottom: 20px;
+                    };
+                    .user {
+                        margin-right: 2px;
+
+                        img {
+                            height: 45px;
+                            width: 45px;
+                        }
+                    }
+                    .number {
+                        margin-left: 5px;
+                        height: 45px;
+                        width: 45px;
+                    }
+                }
+                .info {
+                    margin-top: 15px;
+
+                    .list {
+                        li {
+                            margin-right: 25px;
+
+                            span {
+                                &:nth-child(1) {
+                                    letter-spacing: .5px;
+                                }
+                            }
+                        }
+                    }
+                    .default-btn {
+                        &.mat-mdc-button {
+                            margin-top: 15px;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .trinta-card {
+        &.team-card {
+            .mat-mdc-card-content {
+                h6 {
+                    font-size: 17px;
+                }
+                .users {
+                    margin: {
+                        top: 20px;
+                        bottom: 20px;
+                    };
+                    .user {
+                        img {
+                            height: 48px;
+                            width: 48px;
+                        }
+                    }
+                    .number {
+                        height: 48px;
+                        width: 48px;
+                    }
+                }
+                .info {
+                    margin-top: 20px;
+
+                    .list {
+                        li {
+                            margin-right: 30px;
+                        }
+                    }
+                    .default-btn {
+                        &.mat-mdc-button {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {
+
+    .trinta-card {
+        &.team-card {
+            .mat-mdc-card-content {
+                .info {
+                    .list {
+                        li {
+                            margin-right: 45px;
+                        }
+                    }
+                    .default-btn {
+                        &.mat-mdc-button {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+.trinta-card {
+    &.all-events-card {
+        .mat-mdc-card-content {
+            .all-events-table {
+                .mat-mdc-table {
+                    width: 100%;
+                    overflow: hidden;
+                    background-color: transparent;
+
+                    .mat-mdc-header-row {
+                        height: auto;
+                        line-height: initial;
+                        letter-spacing: 0.14px;
+                        color: var(--darkColor);
+                        background: transparent;
+                        font: {
+                            weight: 500;
+                            size: var(--fontSize);
+                            family: var(--fontFamily);
+                        };
+                        .mat-mdc-header-cell {
+                            border: none;
+                            overflow: unset;
+                            text-align: start;
+                            white-space: nowrap;
+                            line-height: initial;
+                            padding: 0 15px 15px;
+                            letter-spacing: normal;
+                            background: transparent;
+                            border-bottom: 2px solid #edeff5;
+                        }
+                    }
+                    .mat-mdc-row, .mdc-data-table__content {
+                        line-height: initial;
+                        background: transparent;
+                        font: {
+                            weight: normal;
+                            size: var(--fontSize);
+                            family: var(--fontFamily);
+                        };
+                    }
+                    .mat-mdc-row {
+                        height: auto;
+                        color: var(--blackColor);
+                    }
+                    .mat-mdc-cell {
+                        border: none;
+                        padding: 18px;
+                        overflow: hidden;
+                        text-align: start;
+                        white-space: nowrap;
+                        line-height: initial;
+                        letter-spacing: 0.14px;
+                        background: transparent;
+                        border-bottom: 1px solid #edeff5;
+
+                        .event-info {
+                            .image {
+                                width: 52px;
+                                margin-right: 16px;
+                                border-radius: 6px;
+
+                                img {
+                                    border-radius: 6px;
+                                }
+                            }
+                            .info {
+                                a {
+                                    margin-bottom: 8px;
+                                    font: {
+                                        size: 15px;
+                                        family: var(--headingFontFamily);
+                                    };
+                                }
+                            }
+                        }
+                        .action {
+                            .mat-mdc-button {
+                                font-size: 18px;
+                                color: #818093;
+                                margin-right: 12px;
+
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .mat-mdc-paginator {
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .trinta-card {
+        &.all-events-card {
+            .mat-mdc-card-content {
+                .all-events-table {
+                    .mat-mdc-table {
+                        .mat-mdc-header-row {
+                            font-size: 13px;
+                        }
+                        .mat-mdc-row, .mdc-data-table__content {
+                            font-size: 13px;
+                        }
+                        .mat-mdc-cell {
+                            padding: 15px;
+
+                            .event-info {
+                                .image {
+                                    margin-right: 12px;
+                                }
+                                .info {
+                                    a {
+                                        font-size: 13px;
+                                    }
+                                }
+                            }
+                            .action {
+                                .mat-mdc-button {
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .trinta-card {
+        &.all-events-card {
+            .mat-mdc-card-content {
+                .all-events-table {
+                    .mat-mdc-table {
+                        .mat-mdc-cell {
+                            padding: 15px;
+
+                            .event-info {
+                                .image {
+                                    margin-right: 15px;
+                                }
+                                .info {
+                                    a {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                            .action {
+                                .mat-mdc-button {
+                                    font-size: 17px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+::ng-deep {
+  .trinta-card {
+    &.all-courses-card {
+      .mat-mdc-card-content {
+        .mat-mdc-tab-group {
+          display: block;
+
+          .mat-mdc-tab-header {
+            display: block;
+
+            .mat-mdc-tab-label-container {
+              display: block;
+              border: 0;
+
+              .mat-mdc-tab-labels {
+                background-color: #f7faff;
+              }
+              .mat-mdc-tab {
+                flex-grow: 1;
+                min-width: auto;
+                color: var(--blackColor);
+                transition: var(--transition);
+                padding: {
+                  left: 15px;
+                  top: 15.5px;
+                  right: 15px;
+                  bottom: 15.5px;
+                };
+                .mdc-tab__text-label {
+                  color: var(--blackColor);
+                  transition: var(--transition);
+                  font: {
+                    weight: 500;
+                    size: var(--fontSize);
+                  };
+                }
+                &.mdc-tab--active {
+                  background-color: var(--primaryColor);
+
+                  .mdc-tab__text-label {
+                    color: var(--whiteColor);
+                  }
+                }
+                .mdc-tab-indicator {
+                  display: none;
+                }
+                &:not(.mdc-tab--stacked) {
+                  height: auto;
+                }
+              }
+            }
+            .mat-mdc-tab-header-pagination {
+              display: none;
+            }
+          }
+          .mat-mdc-tab-body-wrapper {
+            display: block;
+            margin-top: 25px;
+
+            .mat-mdc-tab-body {
+              overflow: hidden;
+
+              .mat-mdc-tab-body-content {
+                height: auto;
+                overflow: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+  ::ng-deep {
+    .trinta-card {
+      &.all-courses-card {
+        .mat-mdc-card-content {
+          .mat-mdc-tab-group {
+            .mat-mdc-tab-header {
+              .mat-mdc-tab-label-container {
+                .mat-mdc-tab-labels {
+                  display: block;
+                }
+                .mat-mdc-tab {
+                  padding: {
+                    top: 15px;
+                    bottom: 15px;
+                  };
+                  .mdc-tab__text-label {
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+            .mat-mdc-tab-body-wrapper {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {
+
+  ::ng-deep {
+    .trinta-card {
+      &.all-courses-card {
+        .mat-mdc-card-content {
+          .mat-mdc-tab-group {
+            .mat-mdc-tab-header {
+              .mat-mdc-tab-label-container {
+                .mat-mdc-tab-labels {
+                  display: flex;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+  ::ng-deep {
+    .trinta-card {
+      &.all-courses-card {
+        .mat-mdc-card-content {
+          .mat-mdc-tab-group {
+            .mat-mdc-tab-header {
+              .mat-mdc-tab-label-container {
+                .mat-mdc-tab {
+                  padding: {
+                    top: 15px;
+                    bottom: 15px;
+                  };
+                }
+              }
+            }
+            .mat-mdc-tab-body-wrapper {
+              margin-top: 22px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+
+  
