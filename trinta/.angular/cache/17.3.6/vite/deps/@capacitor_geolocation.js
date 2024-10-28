@@ -1,11 +1,11 @@
 import {
   registerPlugin
-} from "./chunk-TPJYAETO.js";
+} from "./chunk-KLG2MK3Y.js";
 import "./chunk-CPNXOV62.js";
 
 // node_modules/@capacitor/geolocation/dist/esm/index.js
 var Geolocation = registerPlugin("Geolocation", {
-  web: () => import("./web-CPV27VMR.js").then((m) => new m.GeolocationWeb())
+  web: () => import("./web-NQQS5IRL.js").then((m) => new m.GeolocationWeb())
 });
 export {
   Geolocation

@@ -1,0 +1,19 @@
+.coordinate-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  
+    @media (max-width: 768px) { /* Adjust this width according to your needs */
+      flex-direction: column;
+  
+      mat-form-field {
+        margin-right: 0;
+        margin-bottom: 15px; /* Add some spacing between inputs */
+      }
+    }
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  }
+  

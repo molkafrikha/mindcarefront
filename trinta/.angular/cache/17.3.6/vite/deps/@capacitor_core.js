@@ -13,7 +13,7 @@ import {
   registerPlugin,
   registerWebPlugin,
   setPlatform
-} from "./chunk-TPJYAETO.js";
+} from "./chunk-KLG2MK3Y.js";
 import "./chunk-CPNXOV62.js";
 export {
   Capacitor,
