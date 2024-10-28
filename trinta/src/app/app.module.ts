@@ -86,10 +86,13 @@ import { AllEventNotJoinedComponent } from './components/Event/all-event-not-joi
 import { TakeAssessmentComponent } from './components/Assessment/take-assessment/take-assessment.component';
 import { AssessmentsListComponent } from './components/Assessment/assessemts-list/assessments-list.component';
 import { MatListModule } from '@angular/material/list';  // Import MatListModule
+import { ChatbotComponent } from './components/chatbot/chatbot/chatbot.component';
+
+
 
 @NgModule({
   declarations: [
-
+    
     AppComponent,
     HeaderComponent,
     SidebarComponent,
@@ -120,7 +123,7 @@ import { MatListModule } from '@angular/material/list';  // Import MatListModule
     ChangePasswordComponent,
     SettingsComponent,
     AllApprovedSubmissionsComponent,
-
+    
     SettingsComponent,
     AllRequesterComponent,
     ActiveWorkerComponent,
@@ -130,9 +133,10 @@ import { MatListModule } from '@angular/material/list';  // Import MatListModule
 
   ],
     imports: [
-      
+      FormsModule,
         BrowserModule,
         CommonModule,
+        
         HttpClientModule,
         RouterModule.forRoot([]), // Add your routes here
         FormsModule,

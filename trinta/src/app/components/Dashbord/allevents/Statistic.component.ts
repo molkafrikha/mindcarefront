@@ -59,7 +59,8 @@ export interface Events {
   
 })
 export class AlleventsComponent implements OnInit ,AfterViewInit   {
-
+  userMessage: string = '';
+  chatHistory: { sender: string; message: string }[] = [];
   map: L.Map;
   workers: any[] = [];
   displayedColumns: string[] = ['user__fullName', 'acceptance_ratio'];
@@ -142,6 +143,25 @@ total_data_consumed : number = 0 ;
   navigateToEventDetails(eventId: number) {
     this.router.navigate(['/events', eventId], { fragment: 'details-section' });
   }
+  sendMessage() { 
+    if (this.userMessage.trim()) {
+        // Add user message to chat history
+        this.chatHistory.push({ sender: 'User', message: this.userMessage });
+
+        // Send the message to your Django API
+        this.http.post('http://localhost:8000/api/chatbot_response', { message: this.userMessage })
+            .subscribe((response: any) => {
+                // Access the response correctly
+                const botResponse = response.response; // Updated line
+                this.chatHistory.push({ sender: 'Bot', message: botResponse });
+            }, error => {
+                this.chatHistory.push({ sender: 'Bot', message: 'Sorry, I could not process your request.' });
+            });
+
+        // Reset the user message
+        this.userMessage = '';
+    }
+}
   ngOnInit(): void {
     
     this.workerId = this.route.snapshot.paramMap.get('id') ?? '';

@@ -51,6 +51,8 @@ import {
 import { AllEventNotJoinedComponent } from './components/Event/all-event-not-joined/all-event-not-joined.component';
 import { TakeAssessmentComponent } from './components/Assessment/take-assessment/take-assessment.component';
 import { AssessmentsListComponent } from './components/Assessment/assessemts-list/assessments-list.component';
+import { ChatbotComponent } from './components/chatbot/chatbot/chatbot.component';
+
 
 export const routes: Routes = [
 
@@ -114,7 +116,7 @@ export const routes: Routes = [
   { path: 'Requestworker', component: RequestWorkerComponent },
   { path: '**', component: NotFoundComponent },
 
-
+  { path: 'chatbot', component: ChatbotComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -570,4 +570,15 @@
 </div>
 
 
+<div class="chat-container">
+    <div class="chat-history">
+      <div *ngFor="let chat of chatHistory">
+        <strong>{{ chat.sender }}:</strong> {{ chat.message }}
+      </div>
+    </div>
+    <input [(ngModel)]="userMessage" placeholder="Type your message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+
+
 
