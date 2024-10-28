@@ -79,15 +79,16 @@ import {VisitsByWeekComponent} from "./dashboard/ecommerce/visits-by-week/visits
 import {OrderStatisticsComponent} from "./dashboard/ecommerce/order-statistics/order-statistics.component";
 import { ChangePasswordComponent } from "./settings/change-password/change-password.component";
 import { SettingsComponent } from "./settings/settings.component";
-import {
-  AllApprovedSubmissionsComponent
-} from "./components/Event/event-details/all-approved-submissions/all-approved-submissions.component";
+import {AllApprovedSubmissionsComponent} from "./components/Event/event-details/all-approved-submissions/all-approved-submissions.component";
 import { AllRequesterComponent } from './components/Admin/allusers/all-requester/all-requester.component';
 import { ActiveWorkerComponent } from './components/Admin/allusers/active-worker/active-worker.component';
 import { AllEventNotJoinedComponent } from './components/Event/all-event-not-joined/all-event-not-joined.component';
 import { ChatbotComponent } from './components/chatbot/chatbot/chatbot.component';
 
 
+import { TakeAssessmentComponent } from './components/Assessment/take-assessment/take-assessment.component';
+import { AssessmentsListComponent } from './components/Assessment/assessemts-list/assessments-list.component';
+import { MatListModule } from '@angular/material/list';  // Import MatListModule
 
 @NgModule({
   declarations: [
@@ -126,7 +127,10 @@ import { ChatbotComponent } from './components/chatbot/chatbot/chatbot.component
     SettingsComponent,
     AllRequesterComponent,
     ActiveWorkerComponent,
-    AllEventNotJoinedComponent
+    AllEventNotJoinedComponent,
+    TakeAssessmentComponent,
+    AssessmentsListComponent  
+
   ],
     imports: [
       FormsModule,
@@ -179,6 +183,7 @@ import { ChatbotComponent } from './components/chatbot/chatbot/chatbot.component
         MatInputModule,
         MatFormFieldModule,
         FormsModule,
+        MatListModule,
 
         GoogleMapsModule,
 

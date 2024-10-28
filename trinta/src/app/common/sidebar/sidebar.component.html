@@ -4,10 +4,10 @@
 >
   <div class="logo bg-white">
     <a class="d-flex align-items-center">
-      <img src="assets/images/logo-icon.svg" alt="logo-icon">
+      <img src="assets/images/logo-icon.svg" alt="logo-icon" />
       <span class="fw-extrabold">
-                MindCare
-            </span>
+        MindCare
+      </span>
     </a>
   </div>
   <div
@@ -23,31 +23,51 @@
     <div class="sidebar-inner">
       <div class="sidebar-menu">
         <mat-accordion>
-                    <span class="sub-title text-body">
-                        MAIN
-                    </span>
+          <span class="sub-title text-body">
+            MAIN
+          </span>
 
           <a (click)="handleClick()" routerLink="/Dashboard" class="sidebar-menu-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <i-feather name="home"></i-feather>
             <span class="title">
-                            Dashboard
+              Dashboard
             </span>
           </a>
 
-
-
           <span class="sub-title text-body">
-                        PAGES
-                    </span>
+            PAGES
+          </span>
 
+          <!-- Assessments Section -->
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true" *ngIf="isPatient()">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <i-feather name="check-circle"></i-feather> <!-- Icon for Assessments -->
+                <span class="title">Assessments</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="sidebar-sub-menu">
+              <li class="sidemenu-item" (click)="handleClick()">
+                <a routerLink="/take-assessment" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Take Assessment
+                </a>
+              </li>
+              <li class="sidemenu-item" (click)="handleClick()">
+                <a routerLink="/assessments-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                  Previous Assessments
+                </a>
+              </li>
+            </ul>
+          </mat-expansion-panel>
 
+          <!-- Existing code for Users and Events -->
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
             <mat-expansion-panel-header>
-              <mat-panel-title >
+              <mat-panel-title>
                 <i-feather name="users"></i-feather>
                 <span class="title" *ngIf="isAdmin()">
-                                    Users
-                                </span>
+                  Users
+                </span>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="sidebar-sub-menu">
@@ -64,24 +84,23 @@
                   All Users
                 </a>
               </li>
-
             </ul>
           </mat-expansion-panel>
 
-          <mat-expansion-panel (opened)="panelOpenState = true"  (closed)="panelOpenState = true">
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
             <mat-expansion-panel-header>
-              <mat-panel-title >
+              <mat-panel-title>
                 <i-feather name="coffee"></i-feather>
                 <span class="title">
-                                    Events
-                                </span>
+                  Events
+                </span>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="sidebar-sub-menu">
               <li class="sidemenu-item" (click)="handleClick()">
                 
                
-                <a *ngIf="isDoctor()  || isPatient()" routerLink="/Listevent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                <a *ngIf="isRequester()  || isPatient()" routerLink="/Listevent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                   My events
                 </a>
                 <a *ngIf="isPatient()" routerLink="/NotjoinedEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
@@ -92,39 +111,31 @@
                 <a routerLink="/Requestworker" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                   Worker Join request
                   <span *ngIf="pendingWorkersCount > 0" class="badge-custom">
-                   {{pendingWorkersCount}}
+                    {{pendingWorkersCount}}
                   </span>
                 </a>
               </li>
 
-              <li class="sidemenu-item" *ngIf="isDoctor()" (click)="handleClick()">
+              <li class="sidemenu-item" *ngIf="isRequester()  || isPatient()" (click)="handleClick()">
                 <a routerLink="/CreateEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                   Create An Event
-                </a>
-              </li>
-              <li class="sidemenu-item"  (click)="handleClick()">
-                <a routerLink="/chatbot" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                  chatbot
                 </a>
               </li>
 
             </ul>
           </mat-expansion-panel>
 
-
-
-
           <span class="sub-title text-body">
-                        OTHERS
-                    </span>
+            OTHERS
+          </span>
 
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
             <mat-expansion-panel-header>
-              <mat-panel-title >
+              <mat-panel-title>
                 <i-feather name="settings"></i-feather>
                 <span class="title">
-                                    Settings
-                                </span>
+                  Settings
+                </span>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="sidebar-sub-menu">
@@ -138,7 +149,6 @@
                   Change Password
                 </a>
               </li>
-
             </ul>
           </mat-expansion-panel>
 

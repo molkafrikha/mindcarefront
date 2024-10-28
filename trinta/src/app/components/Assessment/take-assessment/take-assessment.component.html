@@ -1,0 +1,120 @@
+<div class="assessment-container">
+  <h2>Take Assessment</h2>
+  <p class="description">
+    Mental health assessments are used to help doctors identify patients' well-being and provide better care. Please fill out the form below to help us understand your current state.
+  </p>
+  <form #assessmentForm="ngForm" (ngSubmit)="createAssessment(assessmentForm)">
+    <mat-form-field class="full-width">
+      <mat-label>Mood Rating</mat-label>
+      <mat-select [(ngModel)]="assessmentData.moodRating" name="moodRating" required>
+        <mat-option *ngFor="let rating of moodRatings" [value]="rating.value">
+          {{ rating.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Anxiety Rating</mat-label>
+      <input matInput type="number" [(ngModel)]="assessmentData.anxietyRating" name="anxietyRating" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Stress Rating</mat-label>
+      <input matInput type="number" [(ngModel)]="assessmentData.stressRating" name="stressRating" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Sleep Quality Rating</mat-label>
+      <mat-select [(ngModel)]="assessmentData.sleepQualityRating" name="sleepQualityRating" required>
+        <mat-option *ngFor="let rating of sleepQualityRatings" [value]="rating.value">
+          {{ rating.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Physical Pain Rating</mat-label>
+      <mat-select [(ngModel)]="assessmentData.physicalPainRating" name="physicalPainRating" required>
+        <mat-option *ngFor="let rating of physicalPainRatings" [value]="rating.value">
+          {{ rating.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Coping Mechanisms</mat-label>
+      <textarea matInput [(ngModel)]="assessmentData.copingMechanisms" name="copingMechanisms"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Recent Events</mat-label>
+      <textarea matInput [(ngModel)]="assessmentData.recentEvents" name="recentEvents"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Daily Highlights</mat-label>
+      <textarea matInput [(ngModel)]="assessmentData.dailyHighlights" name="dailyHighlights"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Thought Patterns</mat-label>
+      <textarea matInput [(ngModel)]="assessmentData.thoughtPatterns" name="thoughtPatterns"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Gratitude Entries</mat-label>
+      <textarea matInput [(ngModel)]="assessmentData.gratitudeEntries" name="gratitudeEntries"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Comments</mat-label>
+      <textarea matInput [(ngModel)]="assessmentData.comments" name="comments"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="assessmentData.followUpNeeded" name="followUpNeeded">Follow Up Needed</mat-checkbox>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">Save Assessment</button>
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<style>
+  .assessment-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .description {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 16px;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  button {
+    width: 48%;
+  }
+</style>

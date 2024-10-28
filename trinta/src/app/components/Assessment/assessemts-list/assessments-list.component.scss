@@ -1,0 +1,105 @@
+.assessments-container {
+    padding: 2rem;
+    background-color: #f9f9f9; // Soft gray background for the container
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+    h1 {
+      font-size: 1.75rem; // Reduced title size for better balance
+      color: #333; // Darker text for better contrast
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+  
+    .description {
+      font-size: 1rem; // Slightly smaller description text
+      color: #666; // Darker gray for description
+      margin-bottom: 1.5rem; // Reduced margin
+      line-height: 1.5; // Improved line height for readability
+    }
+  
+    .table-responsive {
+      overflow: auto; // Allows for horizontal scrolling on smaller screens
+      background-color: #fff; // Clean white background for the table container
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+  
+      .assessments-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+  
+        th {
+          background-color: #4a4a4a; // Darker gray for the header
+          color: #fff; // White text for contrast
+          font-weight: 400; // Bold header text
+          text-align: left;
+          padding: 0.6rem; // Reduced padding
+          border-bottom: 2px solid #ddd; // Thicker border for separation
+          font-size: 1rem; // Smaller header text size
+        }
+  
+        td {
+          padding: 0.6rem; // Reduced padding
+          border-bottom: 1px solid #eee; // Light border for separation
+          font-size: 0.95rem; // Smaller cell text size
+          color: #444; // Darker text color for better readability
+          transition: background-color 0.3s;
+  
+          &:first-child {
+            border-left: 4px solid #4a4a4a; // Left border for the first column
+            padding-left: 1rem;
+            border-radius: 8px 0 0 8px; // Rounded corners for the first column
+          }
+  
+          &:last-child {
+            border-radius: 0 8px 8px 0; // Rounded corners for the last column
+          }
+        }
+  
+        tr {
+          transition: background-color 0.2s;
+  
+          &:hover {
+            background-color: #f0f0f0; // Light gray on hover
+          }
+        }
+  
+        tr:nth-child(even) {
+          background-color: #f7f7f7; // Slightly darker gray for even rows
+        }
+      }
+    }
+  
+    mat-paginator {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+  
+      .mat-paginator-range-label,
+      .mat-paginator-page-size {
+        color: #444; // Consistent text color for paginator
+        font-weight: 500;
+      }
+  
+      .mat-paginator-navigation-button {
+        background-color: transparent;
+        color: #4a4a4a; // Darker color for paginator buttons
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        border-radius: 50%; // Rounded buttons
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #e0e0e0; // Light gray on hover
+        }
+  
+        &.mat-paginator-icon {
+          font-size: 1rem; // Consistent size for paginator icons
+        }
+      }
+    }
+  }
+  
