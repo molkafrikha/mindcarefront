@@ -23,42 +23,30 @@ declare var navigator: any; // Declare navigator to use Cordova's accelerometer
   styleUrls: ['./details-even.component.scss']
 })
 export class DetailsEvenComponent implements OnInit {
+  
   comments: any[] = [];
   paginatedComments: Comment[] = []; // Array to hold comments for the current page
   pageSize = 5;
   pageIndex = 0;
-  submissionCount: number = 0;
-  acceptedSubmissionCount: number = 0;
+  
   maxPhotos: number = 0;
   eventDetails: any;
-  capturedImage: any | null = null;
-  capturedImageExtension: any | null = null;
-  reconstructedMetadata: any = null;
-  model: tf.LayersModel;
-  originalImageUrl: string;
-  originalMetadata: any;
+  
   address: string;
   latitude: number;
   longitude: number;
-  photosRest: number = 0;
+  
   private embedding: any;
   submitted: boolean = false;
-  cachedImagePath: string | null = null;
-  canTakePhoto: boolean = true;
-  inProcessingSubmissions: any[] = [];
-  approvedSubmissions: any[] = [];
-  displayedColumns: string[] = ['Worker', 'Device specs', 'Submissions', 'action'];
+  
+  
+  
   dataSource = new MatTableDataSource([]);
   eventId: any;
-  isProcessing: boolean = false;
-  progressPercentage: number = 0;
+ 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  resultMessage: string = "";
-  progressMessage: string;
-  isApproved: boolean;
-  isMobile: boolean;
-  joined: boolean = false;
+  
 
   content: string = '';
   patientId: string | null = null; // Initialize as null or a string based on your logic
@@ -74,7 +62,7 @@ export class DetailsEvenComponent implements OnInit {
     private submissionService: SubmissionService,
     private router: Router
   ) {
-    this.isMobile = Capacitor.getPlatform() === 'ios' || Capacitor.getPlatform() === 'android';
+   
   }
 
   async ngOnInit() {
@@ -101,8 +89,8 @@ export class DetailsEvenComponent implements OnInit {
           console.log(res);
           if (res.status === 'APPROVED') {
             console.log('true');
-            this.joined = true;
-            console.log(this.joined);
+            
+            
             this.cdr.detectChanges();
           }
         });
@@ -118,7 +106,7 @@ export class DetailsEvenComponent implements OnInit {
 
     try {
       const modelUrl = 'assets/encoder/model.json';
-      this.model = await tf.loadLayersModel(modelUrl);
+      
       console.log('Model loaded successfully');
     } catch (error) {
       console.error('Error loading model:', error);
@@ -160,20 +148,39 @@ export class DetailsEvenComponent implements OnInit {
       }
     );
   }
-  
+  getSentimentEmoji(sentiment: string): string {
+    switch (sentiment) {
+      case 'positive':
+        return '😊'; // Smiley heureux
+      case 'negative':
+        return '😠'; // Smiley fâché
+      case 'neutral':
+        return '😐'; // Smiley neutre
+      default:
+        return ''; // Aucun smiley si le sentiment n'est pas reconnu
+    }
+  }
 
+  isDoctor(): boolean {
+    return this.authservice.getRole() === 'Doctor';
+  }
   submitComment() {
     if (this.content.trim() === '') {
-      // Handle empty comment case (optional)
       return;
     }
-
-    // Call the sendComment method from your EventService
+  
     this.eventService.sendComment(this.eventId, this.patientId, this.content).subscribe(
       response => {
         console.log('Comment submitted successfully:', response);
+        
+        // Add the new comment to the local comments array
+        this.comments.push({
+          content: this.content,
+          // Include any other fields returned by the response if needed
+        });
+  
         this.content = ''; // Clear the input after submission
-        this.loadComments(); // Reload comments after submission
+        this.cdr.detectChanges(); // Trigger change detection
       },
       error => {
         console.error('Error submitting comment:', error);

@@ -16,6 +16,12 @@
               <td mat-cell *matCellDef="let element">{{element.event_title}}</td>
             </ng-container>
 
+
+            <ng-container matColumnDef="patient_fullname">
+              <th mat-header-cell *matHeaderCellDef>fullName</th>
+              <td mat-cell *matCellDef="let element">{{element.patient_fullname}}</td>
+            </ng-container>
+
             <!-- Device Specs Column -->
             <ng-container matColumnDef="device_specs">
               <th mat-header-cell *matHeaderCellDef>Device Specification</th>

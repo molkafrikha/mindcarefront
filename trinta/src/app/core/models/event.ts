@@ -1,11 +1,11 @@
 import { Submission } from "./submission";
 import { Reward } from "./reward";
-import { Patient } from "./patient"; // Importer le modèle Patient
+import { Doctor } from "./doctor"; // Importer le modèle Patient
 import { joined_patients } from "./joined_patients"; // Remplacez par le bon nom du fichier
 
 export interface Event {
   id: number;
-  requester: Patient; // Changer de Requester à Patient
+  requester: Doctor; // Changer de Requester à Patient
   type: 'fires' | 'floods';
   title: string;
   description: string;
