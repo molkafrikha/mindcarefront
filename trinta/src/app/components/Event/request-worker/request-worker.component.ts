@@ -10,7 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class RequestWorkerComponent implements OnInit {
   
-  displayedColumns: string[] = ['event_title', 'device_specs', 'joined_at', 'actions'];
+  displayedColumns: string[] = ['event_title', 'patient_fullname', 'joined_at', 'actions'];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource = new MatTableDataSource<any>([]);
   constructor(private eventService: EventService, private authService: AuthServiceService) {}

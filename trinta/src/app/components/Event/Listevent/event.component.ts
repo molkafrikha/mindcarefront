@@ -1,4 +1,4 @@
-import { joined_patients } from '../../../core/models/joined_patients';
+import { joined_patients } from './../../../core/models/joined_patients';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -15,7 +15,7 @@ import {Capacitor} from "@capacitor/core";
 })
 export class EventComponent implements OnInit {
   displayedColumns: string[] = ['event', 'price', 'host', 'startTime', 'eventDate' , 'status'];
-  displayedColumns1: string[] = ['Event', 'Requester', 'Created at', 'startdate', 'Deadline', 'Max photos', 'Photos/Worker', 'Reward', 'Joined workes', 'Submissions', 'action'];
+  displayedColumns1: string[] = ['Event', 'Requester', 'Created at', 'startdate', 'Deadline', 'Reward'];
   dataSource = new MatTableDataSource<any>([]);
   requesterEvents: any[] = [];  // Store requester's events
   selectedTabDataSource = new MatTableDataSource<any>([]);
@@ -54,7 +54,7 @@ export class EventComponent implements OnInit {
     });
     if (this.isRequester()) {
       this.loadRequesterEvents(this.selectedTab);
-    }else if(this.isWorker()){
+    }else if(this.isPatient()){
       this.loadApprovedRequesters()
 
       this.loadWorkerJoinedEvents(localStorage.getItem('id'),this.selectedTab)
@@ -102,7 +102,7 @@ export class EventComponent implements OnInit {
     this.selectedTab = tabLabel;
     if (this.isRequester()) {
       this.loadRequesterEvents(this.selectedTab);
-    }else if(this.isWorker()){
+    }else if(this.isPatient()){
       this.loadWorkerJoinedEvents(localStorage.getItem('id'),this.selectedTab)
     }else{
 
@@ -112,16 +112,16 @@ export class EventComponent implements OnInit {
   }
 
 
-  loadWorkerJoinedEvents(worker_id: any, tab: string): void {
-    console.log(worker_id)
+  loadWorkerJoinedEvents(patient_id: any, tab: string): void {
+    console.log(patient_id)
     let eventObservable;
 
     if (tab === 'all') {
-      eventObservable = this.eventService.getWorkerJoinedEvents(worker_id);
+      eventObservable = this.eventService.getWorkerJoinedEvents(patient_id);
     } else if (tab === 'in-progress') {
-      eventObservable = this.eventService.getWorkerJoinedUpcomingEvents(worker_id);
+      eventObservable = this.eventService.getWorkerJoinedUpcomingEvents(patient_id);
     } else if (tab === 'finished') {
-      eventObservable = this.eventService.getWorkerJoinedPastEvents(worker_id);
+      eventObservable = this.eventService.getWorkerJoinedPastEvents(patient_id);
     }
 
     eventObservable?.subscribe(
@@ -129,7 +129,7 @@ export class EventComponent implements OnInit {
         // Assuming you want to filter based on deadline and approval status only for 'in-progress'
         if (tab === 'in-progress') {
           const filteredEvents = events.filter(event =>
-            event.joined_patients.some(worker => worker.status === 'APPROVED') &&
+            event.joined_patients.some(patient => patient.status === 'APPROVED') &&
             new Date(event.deadline) >= new Date()
           );
           this.selectedTabDataSource.data = filteredEvents;
@@ -172,13 +172,16 @@ export class EventComponent implements OnInit {
   isRequester(): boolean {
     return this.authServiceService.getRole() === 'Requester';
   }
-  isPatient(): boolean {
-    return this.authServiceService.getRole() === 'Patient';
-  }
+
   isWorker(): boolean {
     return this.authServiceService.getRole() === 'Worker';
   }
-
+  isPatient(): boolean {
+    return this.authServiceService.getRole() === 'Patient';
+  }
+  isDoctor(): boolean {
+    return this.authServiceService.getRole() === 'Doctor';
+  }
   isAdmin(): boolean {
     return this.authServiceService.getRole() === 'Admin';
   }

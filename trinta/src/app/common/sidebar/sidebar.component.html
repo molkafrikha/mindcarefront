@@ -98,10 +98,12 @@
             </mat-expansion-panel-header>
             <ul class="sidebar-sub-menu">
               <li class="sidemenu-item" (click)="handleClick()">
-                <a *ngIf="isRequester() || isPatient()" routerLink="/Listevent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                
+               
+                <a *ngIf="isDoctor()  || isPatient()" routerLink="/Listevent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                   My events
                 </a>
-                <a *ngIf="isWorker() || isPatient()" routerLink="/NotjoinedEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
+                <a *ngIf="isPatient()" routerLink="/NotjoinedEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                   New Events
                 </a>
               </li>
@@ -113,7 +115,8 @@
                   </span>
                 </a>
               </li>
-              <li class="sidemenu-item" *ngIf="isRequester() || isPatient()" (click)="handleClick()">
+
+              <li class="sidemenu-item" *ngIf="isDoctor()" (click)="handleClick()">
                 <a routerLink="/CreateEvent" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                   Create An Event
                 </a>

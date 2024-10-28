@@ -1,11 +1,11 @@
 import {
   registerPlugin
-} from "./chunk-KLG2MK3Y.js";
-import "./chunk-CPNXOV62.js";
+} from "./chunk-RWICNS3B.js";
+import "./chunk-ASLTLD6L.js";
 
 // node_modules/@capacitor/device/dist/esm/index.js
 var Device = registerPlugin("Device", {
-  web: () => import("./web-NTVEURA6.js").then((m) => new m.DeviceWeb())
+  web: () => import("./web-WK4FXO4A.js").then((m) => new m.DeviceWeb())
 });
 export {
   Device

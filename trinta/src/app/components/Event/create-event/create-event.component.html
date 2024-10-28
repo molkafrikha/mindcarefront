@@ -50,16 +50,7 @@
           </div>
         </div>
 
-        <!-- Coverage Area Section -->
-        <div class="col-lg-12">
-          <label class="label d-block fw-medium mb-10">Coverage Area</label>
-          <mat-form-field>
-            <i-feather name="map"></i-feather>
-            <mat-label>Enter Coverage Area in meter</mat-label>
-            <input matInput [(ngModel)]="eventData.CoverageArea" name="CoverageArea" required #CoverageArea="ngModel">
-            <mat-error *ngIf="CoverageArea.invalid && CoverageArea.touched">Coverage Area is required</mat-error>
-          </mat-form-field>
-        </div>
+       
 
         <!-- Date Section -->
  
@@ -104,24 +95,7 @@
         </div>
 
         <!-- Photos Section -->
-        <div class="col-lg-12">
-          <label class="label d-block fw-medium mb-10">Number of Request Photos</label>
-          <mat-form-field>
-            <i-feather name="camera"></i-feather>
-            <mat-label>Enter number</mat-label>
-            <input matInput [(ngModel)]="eventData.numberOfPhotos" name="numberOfPhotos" required #numberOfPhotos="ngModel">
-            <mat-error *ngIf="numberOfPhotos.invalid && numberOfPhotos.touched">Number of request photos is required</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-12">
-          <label class="label d-block fw-medium mb-10">Max photos per worker</label>
-          <mat-form-field>
-            <i-feather name="camera"></i-feather>
-            <mat-label>Enter number</mat-label>
-            <input matInput [(ngModel)]="eventData.max_photos_per_worker" name="MaxPhotos" required #numberOfPhotos="ngModel">
-            <mat-error *ngIf="numberOfPhotos.invalid && numberOfPhotos.touched">Number of request photos is required</mat-error>
-          </mat-form-field>
-        </div>
+       
       </div>
 
       <div class="save-event-btn">

@@ -73,6 +73,10 @@ export class SidebarComponent implements OnInit{
         return this.authServiceService.getRole() === 'Worker';
       }
 
+      isDoctor(): boolean {
+        return this.authServiceService.getRole() === 'Doctor';
+      }
+
       isAdmin(): boolean {
         return this.authServiceService.getRole() === 'Admin';
       }

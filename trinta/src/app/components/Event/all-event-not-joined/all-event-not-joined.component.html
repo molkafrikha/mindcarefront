@@ -23,7 +23,7 @@
           </h6>
         </div>
         <p class="fs-15">
-          <b>Requester : </b> {{ event.requester_organization_name }}
+          {{ event.requester_organization_name }}
         </p>
 
         <p class="fs-15 event-description">
@@ -71,7 +71,7 @@
             </mat-icon>
             <div>
               <h6>
-                Event Reward
+                Event Cost
               </h6>
               <span class="d-block text-body">
        {{ event.cost | currency }}

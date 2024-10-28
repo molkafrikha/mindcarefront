@@ -145,9 +145,9 @@ export class AuthServiceService {
 
 // Créer un nouvel événement
 createEvent(eventData: any): Observable<any> {
-  const patient_id = this.getUserId();  // Obtenir l'ID de l'utilisateur actuel
-  if (patient_id) {
-    eventData.patient = patient_id;  // Ajouter l'ID du demandeur au payload
+  const id = this.getUserId();  // Obtenir l'ID de l'utilisateur actuel
+  if (id) {
+    eventData.doctor = id;  // Ajouter l'ID du demandeur au payload
   } else {
     throw new Error('User ID is not available');
   }

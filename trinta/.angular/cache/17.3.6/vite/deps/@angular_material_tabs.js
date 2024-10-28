@@ -1,20 +1,20 @@
 import {
   CdkScrollable,
   ViewportRuler
-} from "./chunk-YCKZ5QB7.js";
+} from "./chunk-IMXH6M3L.js";
 import {
   CdkPortal,
   CdkPortalOutlet,
   TemplatePortal
-} from "./chunk-ZGRHKTRG.js";
+} from "./chunk-4V674OOK.js";
 import {
   animate,
   state,
   style,
   transition,
   trigger
-} from "./chunk-EMG4EZJX.js";
-import "./chunk-DNSJ3ZTU.js";
+} from "./chunk-YCMHZF5H.js";
+import "./chunk-4S5NO6N2.js";
 import {
   CdkMonitorFocus,
   CdkObserveContent,
@@ -26,17 +26,17 @@ import {
   MatRipple,
   SPACE,
   hasModifierKey
-} from "./chunk-TETTS7K6.js";
+} from "./chunk-VO2FEDFY.js";
 import {
   Directionality
-} from "./chunk-JITP4CGV.js";
+} from "./chunk-B62XPKJF.js";
 import {
   Platform,
   normalizePassiveListenerOptions
-} from "./chunk-F5UNLHDR.js";
+} from "./chunk-RVV5FQRK.js";
 import {
   DOCUMENT
-} from "./chunk-2B365O5H.js";
+} from "./chunk-2JR4J344.js";
 import {
   ANIMATION_MODULE_TYPE,
   Attribute,
@@ -108,12 +108,12 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵviewQuery
-} from "./chunk-MUQ7ZUXG.js";
+} from "./chunk-IVGVY75P.js";
+import "./chunk-CDHW674W.js";
 import {
   fromEvent,
   merge
 } from "./chunk-G6OGJ72U.js";
-import "./chunk-CDHW674W.js";
 import {
   BehaviorSubject,
   EMPTY,
@@ -130,7 +130,7 @@ import {
   takeUntil,
   timer
 } from "./chunk-KDRSJVY2.js";
-import "./chunk-CPNXOV62.js";
+import "./chunk-ASLTLD6L.js";
 
 // node_modules/@angular/material/fesm2022/tabs.mjs
 var _c0 = ["*"];
