@@ -85,12 +85,13 @@ import {
 import { AllRequesterComponent } from './components/Admin/allusers/all-requester/all-requester.component';
 import { ActiveWorkerComponent } from './components/Admin/allusers/active-worker/active-worker.component';
 import { AllEventNotJoinedComponent } from './components/Event/all-event-not-joined/all-event-not-joined.component';
+import { ChatbotComponent } from './components/chatbot/chatbot/chatbot.component';
 
 
 
 @NgModule({
   declarations: [
-
+    
     AppComponent,
     HeaderComponent,
     SidebarComponent,
@@ -121,16 +122,17 @@ import { AllEventNotJoinedComponent } from './components/Event/all-event-not-joi
     ChangePasswordComponent,
     SettingsComponent,
     AllApprovedSubmissionsComponent,
-
+    
     SettingsComponent,
     AllRequesterComponent,
     ActiveWorkerComponent,
     AllEventNotJoinedComponent
   ],
     imports: [
-      
+      FormsModule,
         BrowserModule,
         CommonModule,
+        
         HttpClientModule,
         RouterModule.forRoot([]), // Add your routes here
         FormsModule,
